@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qf.test.mapper.OrdersMapper">
+
+
+   <insert id="insertOrders" parameterType="Orders">
+
+        <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int" >
+        SELECT LAST_INSERT_ID()
+        </selectKey>
+
+        insert into orders values (null,#{userId},#{totalPrice},#{createTime},#{note});
+    </insert>
+
+
+    <insert id="insertOrderDetail" parameterType="OrderDetail">
+        insert into orderdetail values (null,#{ordersId},#{itemsId}，#{itemsNum});
+    </insert>
+
+</mapper>
